@@ -1,0 +1,24 @@
+FROM openjdk:8-jdk
+
+# 安装Maven
+RUN apt-get update && \
+    apt-get install -y wget && \
+    wget https://archive.apache.org/dist/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz && \
+    tar -xzf apache-maven-3.8.6-bin.tar.gz -C /opt && \
+    rm apache-maven-3.8.6-bin.tar.gz && \
+    ln -s /opt/apache-maven-3.8.6 /opt/maven
+
+# 设置Maven环境变量
+ENV MAVEN_HOME=/opt/maven
+ENV PATH=$MAVEN_HOME/bin:$PATH
+
+# 设置时区
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# 设置工作目录
+WORKDIR /workspace
+
+# 暴露端口
+EXPOSE 48080
+

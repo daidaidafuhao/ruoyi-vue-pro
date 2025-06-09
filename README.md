@@ -4,6 +4,14 @@
  <img src="https://img.shields.io/github/license/YunaiV/ruoyi-vue-pro"/>
 </p>
 
+docker exec -it ruoyi-backend-dev /bin/bash
+编译命令
+mvn clean install package -Dmaven.test.skip=true
+找到启动的进程
+jps -l | cat
+启动命令
+cd yudao-server
+mvn exec:java -Dexec.mainClass="cn.iocoder.yudao.server.YudaoServerApplication" -Dexec.args="--spring.profiles.active=local"
 **严肃声明：现在、未来都不会有商业版本，所有代码全部开源!！**
 
 **「我喜欢写代码，乐此不疲」**  

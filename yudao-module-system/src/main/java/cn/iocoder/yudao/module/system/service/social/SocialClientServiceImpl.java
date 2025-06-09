@@ -168,6 +168,10 @@ public class SocialClientServiceImpl implements SocialClientService {
     public AuthUser getAuthUser(Integer socialType, Integer userType, String code, String state) {
         // 构建请求
         AuthRequest authRequest = buildAuthRequest(socialType, userType);
+        // 打印配置信息
+        AuthConfig authConfig = (AuthConfig) ReflectUtil.getFieldValue(authRequest, "config");
+        log.info("[getAuthUser][实际使用的配置 socialType({}) userType({}) clientId({}) clientSecret({})]", 
+            socialType, userType, authConfig.getClientId(), authConfig.getClientSecret());
         AuthCallback authCallback = AuthCallback.builder().code(code).state(state).build();
         // 执行请求
         AuthResponse<?> authResponse = authRequest.login(authCallback);
