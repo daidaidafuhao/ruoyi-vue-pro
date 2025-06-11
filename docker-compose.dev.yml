@@ -52,6 +52,9 @@ services:
       - redis
     networks:
       - ruoyi-network
+    command: >
+      sh -c " cd yudao-server &&
+             mvn exec:java -Dexec.mainClass="cn.iocoder.yudao.server.YudaoServerApplication" -Dexec.args="--spring.profiles.active=local""
 
   # Adminer - MySQL Web管理界面（轻量级，只有20MB）
   adminer:
