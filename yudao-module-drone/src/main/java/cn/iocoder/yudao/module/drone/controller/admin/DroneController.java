@@ -61,23 +61,23 @@ public class DroneController {
 
     @PostMapping("/servo/open")
     @Operation(summary = "打开舵机")
-    public CommonResult<Boolean> openServo() throws Exception {
-        // This method is no longer used in the new implementation
-        throw new UnsupportedOperationException("This method is no longer used in the new implementation");
+    public CommonResult<Boolean> openServo(@Validated @RequestBody ModbusRequest request) throws Exception {
+        JLibModbusUtils modbusUtils = new JLibModbusUtils(request.getIp(), request.getPort(), request.getSlaveId());
+        return success(modbusUtils.openServo() == JLibModbusUtils.ResultCode.SUCCESS);
     }
 
     @PostMapping("/servo/close")
     @Operation(summary = "关闭舵机")
-    public CommonResult<Boolean> closeServo() throws Exception {
-        // This method is no longer used in the new implementation
-        throw new UnsupportedOperationException("This method is no longer used in the new implementation");
+    public CommonResult<Boolean> closeServo(@Validated @RequestBody ModbusRequest request) throws Exception {
+        JLibModbusUtils modbusUtils = new JLibModbusUtils(request.getIp(), request.getPort(), request.getSlaveId());
+        return success(modbusUtils.closeServo() == JLibModbusUtils.ResultCode.SUCCESS);
     }
 
     @PostMapping("/package/drone-pickup")
     @Operation(summary = "无人机取件")
-    public CommonResult<Boolean> dronePickupPackage() throws Exception {
-        // This method is no longer used in the new implementation
-        throw new UnsupportedOperationException("This method is no longer used in the new implementation");
+    public CommonResult<Boolean> dronePickupPackage(@Validated @RequestBody ModbusRequest request) throws Exception {
+        JLibModbusUtils modbusUtils = new JLibModbusUtils(request.getIp(), request.getPort(), request.getSlaveId());
+        return success(modbusUtils.dronePickupPackage() == JLibModbusUtils.ResultCode.SUCCESS);
     }
 
     @PostMapping("/package/user-pickup-by-box")
@@ -127,10 +127,10 @@ public class DroneController {
         return success(modbusUtils.remoteDeposit() == JLibModbusUtils.ResultCode.SUCCESS);
     }
 
-    @GetMapping("/package/can-deposit")
+    @PostMapping("/package/can-deposit")
     @Operation(summary = "检查是否可以寄件")
-    public CommonResult<Boolean> canDeposit() throws Exception {
-        // This method is no longer used in the new implementation
-        throw new UnsupportedOperationException("This method is no longer used in the new implementation");
+    public CommonResult<Boolean> canDeposit(@Validated @RequestBody ModbusRequest request) throws Exception {
+        JLibModbusUtils modbusUtils = new JLibModbusUtils(request.getIp(), request.getPort(), request.getSlaveId());
+        return success(modbusUtils.canDeposit());
     }
 } 

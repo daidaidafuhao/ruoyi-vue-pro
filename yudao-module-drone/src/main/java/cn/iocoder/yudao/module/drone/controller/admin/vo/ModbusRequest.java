@@ -23,4 +23,8 @@ public class ModbusRequest {
     @Schema(description = "Modbus 从站ID", required = true, example = "1")
     @NotNull(message = "从站ID不能为空")
     private Integer slaveId;
+
+    @Schema(description = "格口号", required = true, example = "1")
+    @NotNull(message = "格口号不能为空")
+    private Integer boxNo;
 } 

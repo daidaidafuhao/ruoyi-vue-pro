@@ -53,6 +53,10 @@ public class CabinetRespVO {
     @ExcelProperty("状态（0-离线 1-在线 2-故障）")
     private Integer status;
 
+    @Schema(description = "部门编号")
+    @ExcelProperty("部门编号")
+    private Long deptId;
+
     @Schema(description = "总格口数", requiredMode = Schema.RequiredMode.REQUIRED)
     @ExcelProperty("总格口数")
     private Integer totalBoxes;

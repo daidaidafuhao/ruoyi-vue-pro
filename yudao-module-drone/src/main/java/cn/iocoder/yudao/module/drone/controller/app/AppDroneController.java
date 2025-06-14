@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 
-@Tag(name = "管理后台 - 接驳柜管理")
+@Tag(name = "客户端 - 接驳柜操作")
 @RestController
-@RequestMapping("/drone")
+@RequestMapping("/app/drone")
 @Validated
 public class AppDroneController {
 

@@ -97,5 +97,9 @@ public class CabinetDO extends BaseDO {
      */
     private String remark;
 
+    /**
+     * 部门编号
+     */
+    private Long deptId;
 
 }

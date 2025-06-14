@@ -22,7 +22,8 @@ CREATE TABLE `drone_cabinet` (
     `updater` varchar(64) DEFAULT '' COMMENT '更新者',
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     `deleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否删除',
-     `tenant_id` bigint NOT NULL DEFAULT 0 COMMENT '租户编号',
+    `tenant_id` bigint NOT NULL DEFAULT 0 COMMENT '租户编号',
+    `dept_id` bigint DEFAULT NULL COMMENT '部门编号',
     PRIMARY KEY (`id`),
     UNIQUE KEY `uk_code` (`code`),
     KEY `idx_status` (`status`),
@@ -70,7 +71,7 @@ CREATE TABLE `drone_cabinet_box` (
 
 -- 插入测试数据
 INSERT INTO `drone_cabinet` 
-(`name`, `code`, `ip`, `port`, `slave_id`, `address`, `longitude`, `latitude`, `status`, `total_boxes`, `available_boxes`, `remark`, `tenant_id`) 
+(`name`, `code`, `ip`, `port`, `slave_id`, `address`, `longitude`, `latitude`, `status`, `total_boxes`, `available_boxes`, `remark`, `tenant_id`, `dept_id`) 
 VALUES 
-('测试柜1', 'DC001', '192.168.1.100', 502, 1, '浙江省杭州市西湖区文三路123号', 120.123456, 30.123456, 1, 20, 20, '测试柜1号', 1),
-('测试柜2', 'DC002', '192.168.1.101', 502, 1, '浙江省杭州市拱墅区莫干山路456号', 120.234567, 30.234567, 1, 20, 20, '测试柜2号', 1); 
+('测试柜1', 'DC001', '192.168.1.100', 502, 1, '浙江省杭州市西湖区文三路123号', 120.123456, 30.123456, 1, 20, 20, '测试柜1号', 1, 1),
+('测试柜2', 'DC002', '192.168.1.101', 502, 1, '浙江省杭州市拱墅区莫干山路456号', 120.234567, 30.234567, 1, 20, 20, '测试柜2号', 1, 1); 
