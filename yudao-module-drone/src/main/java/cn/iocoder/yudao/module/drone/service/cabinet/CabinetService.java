@@ -59,4 +59,12 @@ public interface CabinetService {
      */
     PageResult<CabinetDO> getCabinetPage(CabinetPageReqVO pageReqVO);
 
+    /**
+     * 获得最近的无人机柜列表
+     *
+     * @param reqVO 查询条件
+     * @return 最近的无人机柜列表
+     */
+    List<CabinetNearestRespVO> getNearestCabinets(CabinetNearestReqVO reqVO);
+
 }

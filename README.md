@@ -3,10 +3,12 @@
  <img src="https://img.shields.io/badge/Vue-3.2-blue.svg" alt="Downloads">
  <img src="https://img.shields.io/github/license/YunaiV/ruoyi-vue-pro"/>
 </p>
-
+重启容器
+docker-compose up -d backend
 docker exec -it ruoyi-backend-dev /bin/bash
 编译命令
 mvn clean install package -Dmaven.test.skip=true
+cd yudao-server && mvn exec:java -Dexec.mainClass=cn.iocoder.yudao.server.YudaoServerApplication -Dexec.args=--spring.profiles.active=local
 找到启动的进程
 jps -l | cat
 启动命令

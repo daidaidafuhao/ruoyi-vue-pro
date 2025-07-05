@@ -89,7 +89,7 @@ public class CabinetController {
     }
 
     @GetMapping("/export-excel")
-    @Operation(summary = "导出无人机柜 Excel")
+    @Operation(summary = "导出无人机柜1 Excel")
     @PreAuthorize("@ss.hasPermission('drone:cabinet:export')")
     @ApiAccessLog(operateType = EXPORT)
     public void exportCabinetExcel(@Valid CabinetPageReqVO pageReqVO,
@@ -97,8 +97,16 @@ public class CabinetController {
         pageReqVO.setPageSize(PageParam.PAGE_SIZE_NONE);
         List<CabinetDO> list = cabinetService.getCabinetPage(pageReqVO).getList();
         // 导出 Excel
-        ExcelUtils.write(response, "无人机柜.xls", "数据", CabinetRespVO.class,
+        ExcelUtils.write(response, "无人机柜1.xls", "数据", CabinetRespVO.class,
                         BeanUtils.toBean(list, CabinetRespVO.class));
+    }
+
+    @GetMapping("/nearest")
+    @Operation(summary = "获得最近的无人机柜")
+    @PreAuthorize("@ss.hasPermission('drone:cabinet:query')")
+    public CommonResult<List<CabinetNearestRespVO>> getNearestCabinets(@Valid CabinetNearestReqVO reqVO) {
+        List<CabinetNearestRespVO> list = cabinetService.getNearestCabinets(reqVO);
+        return success(list);
     }
 
 }

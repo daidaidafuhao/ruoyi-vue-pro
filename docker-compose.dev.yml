@@ -45,7 +45,7 @@ services:
       - SPRING_PROFILES_ACTIVE=local
     volumes:
       - .:/workspace
-      - maven_cache:/root/.m2
+      - ~/.m2:/root/.m2
     working_dir: /workspace
     depends_on:
       - mysql
@@ -53,9 +53,11 @@ services:
     networks:
       - ruoyi-network
     command: >
-      sh -c " cd yudao-server &&
-             mvn exec:java -Dexec.mainClass="cn.iocoder.yudao.server.YudaoServerApplication" -Dexec.args="--spring.profiles.active=local""
-
+      sh -c "cd /workspace &&
+             mvn clean install package -Dmaven.test.skip=true &&
+             cd yudao-server &&
+             mvn spring-boot:run -Dspring-boot.run.jvmArguments='-Dspring.profiles.active=local'"
+  
   # Adminer - MySQL Web管理界面（轻量级，只有20MB）
   adminer:
     image: adminer:4.8.1

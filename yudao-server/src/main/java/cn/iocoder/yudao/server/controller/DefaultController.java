@@ -89,7 +89,19 @@ public class DefaultController {
         log.info("Header: {}", ServletUtils.getHeaderMap(request));
         // 打印请求体
         log.info("Body: {}", ServletUtils.getBody(request));
+        // 添加一个明显的标记
+        log.info("=== 这是修改后的代码，时间戳：" + System.currentTimeMillis() + " ===");
         return CommonResult.success(true);
+    }
+
+    /**
+     * 新的测试接口
+     */
+    @RequestMapping(value = { "/test2" })
+    @PermitAll
+    public CommonResult<String> test2() {
+        log.info("=== 这是一个全新的测试方法 ===");
+        return CommonResult.success("测试成功");
     }
 
 }
