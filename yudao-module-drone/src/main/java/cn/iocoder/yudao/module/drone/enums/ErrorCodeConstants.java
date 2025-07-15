@@ -12,4 +12,5 @@ public interface ErrorCodeConstants {
     // ========== 无人机柜 1-060-001-000 ==========
     ErrorCode CABINET_NOT_EXISTS = new ErrorCode(1_060_001_000, "无人机柜不存在");
     ErrorCode CABINET_CODE_DUPLICATE = new ErrorCode(1_060_001_001, "柜子编号已存在");
+    ErrorCode DRONES_NOT_EXISTS = new ErrorCode(TODO 补充编号, "无人机不存在");
 } 
