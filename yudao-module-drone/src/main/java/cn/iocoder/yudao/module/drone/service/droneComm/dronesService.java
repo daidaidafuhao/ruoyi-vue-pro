@@ -32,24 +32,24 @@ public interface dronesService {
     /**
      * 删除无人机
      *
-     * @param id 编号
+     * @param droneCode 无人机编号
      */
-    void deletedrones(String id);
+    void deletedrones(String droneCode);
 
     /**
     * 批量删除无人机
     *
-    * @param ids 编号
+    * @param droneCodes 无人机编号列表
     */
-    void deletedronesListByIds(List<String> ids);
+    void deletedronesListByIds(List<String> droneCodes);
 
     /**
      * 获得无人机
      *
-     * @param id 编号
+     * @param droneCode 无人机编号
      * @return 无人机
      */
-    dronesDO getdrones(String id);
+    dronesDO getdrones(String droneCode);
 
     /**
      * 获得无人机分页

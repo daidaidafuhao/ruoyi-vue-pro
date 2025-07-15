@@ -51,7 +51,7 @@ public interface dronesMapper extends BaseMapperX<dronesDO> {
                 .eqIfPresent(dronesDO::getRemark, reqVO.getRemark())
                 .betweenIfPresent(dronesDO::getCreateTime, reqVO.getCreateTime())
                 .eqIfPresent(dronesDO::getDeptId, reqVO.getDeptId())
-                .orderByDesc(dronesDO::getId));
+                .orderByDesc(dronesDO::getDroneCode));
     }
 
 }

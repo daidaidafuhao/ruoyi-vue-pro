@@ -55,28 +55,28 @@ public class dronesController {
 
     @DeleteMapping("/delete")
     @Operation(summary = "删除无人机")
-    @Parameter(name = "id", description = "编号", required = true)
+    @Parameter(name = "droneCode", description = "无人机编号", required = true)
     @PreAuthorize("@ss.hasPermission('drone:drones:delete')")
-    public CommonResult<Boolean> deletedrones(@RequestParam("id") String id) {
-        dronesService.deletedrones(id);
+    public CommonResult<Boolean> deletedrones(@RequestParam("droneCode") String droneCode) {
+        dronesService.deletedrones(droneCode);
         return success(true);
     }
 
     @DeleteMapping("/delete-list")
-    @Parameter(name = "ids", description = "编号", required = true)
+    @Parameter(name = "droneCodes", description = "无人机编号列表", required = true)
     @Operation(summary = "批量删除无人机")
                 @PreAuthorize("@ss.hasPermission('drone:drones:delete')")
-    public CommonResult<Boolean> deletedronesList(@RequestParam("ids") List<String> ids) {
-        dronesService.deletedronesListByIds(ids);
+    public CommonResult<Boolean> deletedronesList(@RequestParam("droneCodes") List<String> droneCodes) {
+        dronesService.deletedronesListByIds(droneCodes);
         return success(true);
     }
 
     @GetMapping("/get")
     @Operation(summary = "获得无人机")
-    @Parameter(name = "id", description = "编号", required = true, example = "1024")
+    @Parameter(name = "droneCode", description = "无人机编号", required = true, example = "DRONE001")
     @PreAuthorize("@ss.hasPermission('drone:drones:query')")
-    public CommonResult<dronesRespVO> getdrones(@RequestParam("id") String id) {
-        dronesDO drones = dronesService.getdrones(id);
+    public CommonResult<dronesRespVO> getdrones(@RequestParam("droneCode") String droneCode) {
+        dronesDO drones = dronesService.getdrones(droneCode);
         return success(BeanUtils.toBean(drones, dronesRespVO.class));
     }
 

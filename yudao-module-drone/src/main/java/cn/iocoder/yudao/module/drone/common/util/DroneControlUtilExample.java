@@ -1,4 +1,4 @@
-package com.template.utils;
+package cn.iocoder.yudao.module.drone.common.util;
 
 import com.intelligt.modbus.jlibmodbus.master.ModbusMaster;
 import lombok.extern.slf4j.Slf4j;
