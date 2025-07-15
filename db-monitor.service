@@ -1,0 +1,24 @@
+[Unit]
+Description=Database Monitor and Auto Restore Service
+After=docker.service
+Wants=docker.service
+
+[Service]
+Type=simple
+User=g2569469330pfh
+Group=g2569469330pfh
+WorkingDirectory=/home/g2569469330pfh/yvdao/ruoyi-vue-pro
+ExecStart=/home/g2569469330pfh/yvdao/ruoyi-vue-pro/monitor_and_restore_db.sh -m -i 60
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# 环境变量
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# 让服务可以使用sudo
+Environment=SUDO_ASKPASS=/bin/false
+
+[Install]
+WantedBy=multi-user.target 
