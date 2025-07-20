@@ -59,4 +59,12 @@ public interface dronesService {
      */
     PageResult<dronesDO> getdronesPage(dronesPageReqVO pageReqVO);
 
+    /**
+     * 根据订单流水号获得无人机
+     *
+     * @param currentOrderNo 当前运送订单流水号
+     * @return 无人机
+     */
+    dronesDO getdronesByOrderNo(String currentOrderNo);
+
 }

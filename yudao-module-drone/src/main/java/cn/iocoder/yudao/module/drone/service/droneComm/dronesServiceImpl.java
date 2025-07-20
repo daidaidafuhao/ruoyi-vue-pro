@@ -89,4 +89,9 @@ public class dronesServiceImpl implements dronesService {
         return dronesMapper.selectPage(pageReqVO);
     }
 
+    @Override
+    public dronesDO getdronesByOrderNo(String currentOrderNo) {
+        return dronesMapper.selectByCurrentOrderNo(currentOrderNo);
+    }
+
 }

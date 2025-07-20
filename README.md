@@ -3,6 +3,9 @@
  <img src="https://img.shields.io/badge/Vue-3.2-blue.svg" alt="Downloads">
  <img src="https://img.shields.io/github/license/YunaiV/ruoyi-vue-pro"/>
 </p>
+备份
+sudo docker exec ruoyi-mysql-dev mysqldump -u root -p123456 --single-transaction --routines --triggers ruoyi-vue-pro > sql/mysql/data/ruoyi-vue-pro-backup-$(date +%Y%m%d_%H%M%S).sql
+
 重启容器
 docker-compose up -d backend
 docker exec -it ruoyi-backend-dev /bin/bash

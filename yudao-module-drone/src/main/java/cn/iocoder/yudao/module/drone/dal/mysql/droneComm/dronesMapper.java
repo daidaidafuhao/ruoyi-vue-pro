@@ -54,4 +54,15 @@ public interface dronesMapper extends BaseMapperX<dronesDO> {
                 .orderByDesc(dronesDO::getDroneCode));
     }
 
+    /**
+     * 根据订单流水号查询无人机
+     *
+     * @param currentOrderNo 当前运送订单流水号
+     * @return 无人机信息
+     */
+    default dronesDO selectByCurrentOrderNo(String currentOrderNo) {
+        return selectOne(new LambdaQueryWrapperX<dronesDO>()
+                .eq(dronesDO::getCurrentOrderNo, currentOrderNo));
+    }
+
 }
